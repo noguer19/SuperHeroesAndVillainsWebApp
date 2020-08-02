@@ -4,25 +4,9 @@
     ViewData["Title"] = "Home Page";
 }
 
-@using (Html.BeginForm("Index", "Home", FormMethod.Post))
-{
-    <div class="col-10 mx-auto pb-3 mt-5">
-        <div class="input-group">
-            <input type="text"
-                   name="characterName"
-                   value="@ViewData["searchTerm"]"
-                   placeholder="Type your favorite SuperHeroe´s or Villain´s name here and press the INTRO key to search"
-                   class="form-control form-control-lg" autofocus />
-            <div class="input-group-append">
-                <button type="submit" class="btn btn-warning">
-                    <i class="fa fa-search-plus"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-}
+<partial name="_SearchCharacter" />
 
-@if (Model.Results == null && ViewData["searchTerm"] == null)
+@if (Model.Results == null && TempData.Peek("searchTerm") == null)
 {
     <img class="img-fluid mb-3" src="~/images/SuperHeroesAndVillains_grande.png" alt="All SuperHeroes Image" />
 }
@@ -33,7 +17,7 @@
         <button type="button" class="close" data-dismiss="alert">×</button>
         <h4 class="alert-heading">
             <span class="fa fa-info-circle"></span>
-            Sorry!
+            We are Sorry!
         </h4>
         @{
             string notFoundMesssage = Model.Error.ToLower().Contains("not found")
@@ -52,9 +36,11 @@
         @foreach (var character in Model.Results)
         {
             <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 mb-3 mx-auto">
-                <img class="img-fluid img-max-height-300" src="@character.Image.Url" alt="@character.Name image" />
+                <a href="@Url.Action("Details","Home", new { id = character.Id })">
+                    <img class="img-fluid img-max-height-300 cursor-puntero" data-toggle="tooltip" title="Click to wath details" src="@character.Image.Url" alt="@character.Name image" />
+                </a>
                 <h5 class="mb-0">@character.Name</h5>
-                <small>Gender: @character.Appearance.Gender</small>
+                <small>Gender: @character.Appearance.Gender</small><br />
             </div>
         }
     </div>

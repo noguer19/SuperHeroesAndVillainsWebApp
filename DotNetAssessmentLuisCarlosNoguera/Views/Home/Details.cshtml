@@ -1,0 +1,78 @@
+﻿@model Character
+
+@{
+    ViewData["Title"] = "Character Details Page";
+}
+
+<partial name="_SearchCharacter" />
+
+<div class="row pb-5 mt-3">
+    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 mb-2">
+        <div class="card">
+            <div class="card-header bg-primary">
+                <a class="btn btn-outline-dark text-white" href="@Url.Action("Index","Home", new { characterName = TempData.Peek("searchTerm")})">
+                    <span class="fa fa-arrow-circle-left"> Back to search results</span>
+                </a>
+            </div>
+            <div class="card-body">
+                <img class="img-fluid" src="@Model.Image.Url" alt="@Model.Name image" />
+            </div>
+        </div>
+     
+    </div>
+
+    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 mb-2">
+        <div class="card">
+            <div class="card-header bg-primary">
+                <h2 class="text-center text-white"> @Model.Name </h2>
+                <h5 class="text-center"> <i class="fa fa-id-card-alt"></i>  @Model.Biography.FullName </h5>
+                <small> <i class="fa fa-venus-mars mr-1"></i>  @Model.Appearance.Gender </small>
+                <small class="float-right"> <i class="fa fa-registered mr-1"></i>  @Model.Biography.Publisher </small>
+
+            </div>
+            <div class="card-body font-weight-bold">
+                <p class="mb-2">Alter Egos: <small>@Model.Biography.AlterEgos</small> </p>
+                <p class="mb-2">Aliases: <small> @string.Join(", ", Model.Biography.Aliases)</small> </p>
+                <p class="mb-2">Place of Birth: <small> @Model.Biography.PlaceOfBirth</small></p>
+                <p class="mb-2">First Appearance: <small> @Model.Biography.FirstAppearance</small></p>
+                <p class="mb-2">Alignment: <small> @Model.Biography.Alignment</small></p>
+                <p class="mb-2">Race: <small> @Model.Appearance.Race</small></p>
+                <p class="mb-2">Eye Color: <small> @Model.Appearance.EyeColor</small></p>
+                <p class="mb-2">Hair Color: <small> @Model.Appearance.HairColor</small></p>
+                <p class="mb-0">
+                    Weight: <small> @string.Join(", ", Model.Appearance.Weight)</small> -
+                    Height: <small> @string.Join(", ", Model.Appearance.Height)</small>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-4 col-lg-4 col-md-12 col-12  mb-2">
+        <div class="card">
+            <div class="card-header bg-primary">
+                <h2 class="text-center text-white"> <i class="fa fa-bolt mr-1"></i> Powerstats </h2>
+            </div>
+            <div class="card-body font-weight-bold pt-2">
+                <p class="mb-2">Intelligence: <small>@Model.Powerstats.Intelligence</small> </p>
+                <p class="mb-2">Strength: <small> @Model.Powerstats.Strength</small> </p>
+                <p class="mb-2">Speed: <small> @Model.Powerstats.Speed</small> </p>
+                <p class="mb-2">Durability: <small> @Model.Powerstats.Durability</small> </p>
+                <p class="mb-2">Power: <small> @Model.Powerstats.Power</small> </p>
+                <p class="mb-2">Combat: <small> @Model.Powerstats.Combat</small> </p>
+                <h4 class="bg-primary text-white text-center">
+                    <i class="fa fa-briefcase mr-1"></i>
+                    Work
+                </h4>
+                <p class="mb-2">Occupation: <small> @Model.Work.Occupation</small> </p>
+                <p class="mb-2">Base: <small> @Model.Work.Base</small> </p>
+
+                <h4 class="bg-primary text-white text-center">
+                    <i class="fa fa-external-link-alt mr-1"></i>
+                    Connections
+                </h4>
+                <p class="mb-2">Occupation: <small> @Model.Connections.GroupAffiliations</small> </p>
+                <p class="mb-2">Base: <small> @Model.Connections.Relatives</small> </p>
+            </div>
+        </div>
+    </div>
+</div>

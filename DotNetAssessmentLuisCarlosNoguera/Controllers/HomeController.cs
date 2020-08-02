@@ -23,20 +23,33 @@ namespace DotNetAssessmentLuisCarlosNoguera.Controllers
 
         public async Task<IActionResult> Index(string characterName)
         {
-            SearchResponseViewModel result = new SearchResponseViewModel();
+            SearchResponseViewModel characterList = new SearchResponseViewModel();
             try
             {
-                result = await _characterRepository.GetCharactersByName(characterName);
-                ViewData["searchTerm"] = characterName;
-                return View(result);
+                characterList = await _characterRepository.GetCharactersByName(characterName);
+                TempData["searchTerm"] = characterName;
+                return View(characterList);
             }
             catch(Exception ex)
             {
                 ViewData["ErrorMessage"] = "There was an error when processing your current request. Please check your internet connection and try again or contact the tech suppport team.";
                 return View("Error");
+            }   
+        }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            Character character = new Character();
+            try
+            {
+                character = await _characterRepository.GetCharacterById(id);
+                return View(character);
             }
-      
-            
+            catch (Exception ex)
+            {
+                ViewData["ErrorMessage"] = "There was an error when processing your current request. Please check your internet connection and try again or contact the tech suppport team.";
+                return View("Error");
+            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -71,3 +71,7 @@ body {
 .img-max-height-300 {
     max-height: 300px;
 }
+
+.cursor-puntero{
+    cursor: pointer;
+}

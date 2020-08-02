@@ -19,6 +19,27 @@ namespace DotNetAssessmentLuisCarlosNoguera.Models
             _apiBaseUrl = _apiConfiguration.GetBaseUrlWithToken();
         }
 
+        public async Task<Character> GetCharacterById(int characterId)
+        {
+            Character character = new Character();
+            try
+            {
+                using (var httpClient = new HttpClient())
+                {
+                    using (var apiResponse = await httpClient.GetAsync($"{_apiBaseUrl}/{characterId}"))
+                    {
+                        string apiResponseAsString = await apiResponse.Content.ReadAsStringAsync();
+                        character = JsonConvert.DeserializeObject<Character>(apiResponseAsString);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return character;
+        }
 
         public async Task<SearchResponseViewModel> GetCharactersByName(string characterName)
         {
@@ -44,11 +65,5 @@ namespace DotNetAssessmentLuisCarlosNoguera.Models
 
             return responseViewModel;
         }
-
-        public Character GetCharacterById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
     }
 }

@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 
 namespace DotNetAssessmentLuisCarlosNoguera.Models
 {
-    public class SearchResponseViewModel : ResponseViewModel
+    public interface ICharacterRepository
     {
-        public List<Character> Results { get; set; }
+        Task<SearchResponseViewModel> GetCharactersByName(string name);
+        Task<Character> GetCharacterById(int id);
     }
 }

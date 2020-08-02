@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 
 namespace DotNetAssessmentLuisCarlosNoguera.Models
 {
-    public class SearchResponseViewModel : ResponseViewModel
+    public class CharacterWork
     {
-        public List<Character> Results { get; set; }
+        public string Occupation { get; set; }
+        public string Base { get; set; }
     }
 }
