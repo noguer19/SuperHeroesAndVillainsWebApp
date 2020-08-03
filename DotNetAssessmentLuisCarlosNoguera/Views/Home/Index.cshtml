@@ -4,27 +4,26 @@
     ViewData["Title"] = "Home Page";
 }
 
-<partial name="_SearchCharacter" />
-
 @if (Model.Results == null && TempData.Peek("searchTerm") == null)
 {
-    <img class="img-fluid mb-3" src="~/images/SuperHeroesAndVillains_grande.png" alt="All SuperHeroes Image" />
+    <img class="img-fluid mb-3" src="~/images/HeroesAndVillains.png" alt="All SuperHeroes Image" />
 }
+
+<partial name="_SearchCharacter" />
 
 @if (Model.Error != null)
 {
-    <div class="alert alert-dismissible alert-warning mt-4">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <h4 class="alert-heading">
-            <span class="fa fa-info-circle"></span>
-            We are Sorry!
-        </h4>
-        @{
-            string notFoundMesssage = Model.Error.ToLower().Contains("not found")
-                ? "Please make sure you did not misspell the SuperHero or Villain's name or try with another name."
-                : "";
-        }
-        <p class="mb-0">@Model.Error. @notFoundMesssage </p>
+
+    string notFoundMesssage = Model.Error.ToLower().Contains("not found")
+        ? "Please make sure you did not misspell the Super Hero´s or Villain´s name or try with another name."
+        : "Please contact the tech support team.";
+
+    <div class="jumbotron mt-5 text-center">
+        <h1 class="display-3">
+            <span class="fa fa-frown"></span>
+            ¡We are sorry!
+        </h1>
+        <p class="lead">@Model.Error.. @notFoundMesssage</p>
     </div>
 }
 
@@ -36,7 +35,7 @@
         @foreach (var character in Model.Results)
         {
             <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 mb-3 mx-auto">
-                <a href="@Url.Action("Details","Home", new { id = character.Id })">
+                <a href="@Url.Action("character","Home", new { id = character.Id })">
                     <img class="img-fluid img-max-height-300 cursor-puntero" data-toggle="tooltip" title="Click to wath details" src="@character.Image.Url" alt="@character.Name image" />
                 </a>
                 <h5 class="mb-0">@character.Name</h5>

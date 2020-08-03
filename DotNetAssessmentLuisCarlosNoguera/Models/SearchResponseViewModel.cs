@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 
 namespace DotNetAssessmentLuisCarlosNoguera.Models
 {
-    public class SearchResponseViewModel : ResponseViewModel
+    public class SearchResponseViewModel : IResponseViewModel
     {
         public List<Character> Results { get; set; }
+        public string Response { get; set; }
+        public string Error { get; set; }
     }
 }

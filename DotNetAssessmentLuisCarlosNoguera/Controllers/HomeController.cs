@@ -37,12 +37,17 @@ namespace DotNetAssessmentLuisCarlosNoguera.Controllers
             }   
         }
 
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Character(int id)
         {
             Character character = new Character();
             try
             {
                 character = await _characterRepository.GetCharacterById(id);
+                if(character.Id == 0)
+                {
+                    Response.StatusCode = 404;
+                    return View("CharacterNotFound");
+                }
                 return View(character);
             }
             catch (Exception ex)

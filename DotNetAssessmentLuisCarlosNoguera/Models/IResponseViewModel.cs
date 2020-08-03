@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace DotNetAssessmentLuisCarlosNoguera.Models
 {
-    public class ResponseViewModel
+    public interface IResponseViewModel
     {
-        public string Response { get; set; }
-        public string Error { get; set; }
+        string Response { get; set; }
+        string Error { get; set; }
     }
 }

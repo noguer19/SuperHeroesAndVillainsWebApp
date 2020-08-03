@@ -6,13 +6,13 @@
 
 @if (ViewData["ErrorMessage"] != null)
 {
-    <div class="alert alert-dismissible alert-danger mt-4">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <h2 class="alert-heading">
-            <span class="fa fa-exclamation-circle"></span>
-            We are Sorry!
-        </h2>
-        <h4 class="mb-0">@ViewData["ErrorMessage"]</h4>
+
+    <div class="jumbotron mt-5 text-center">
+        <h1 class="display-3">
+            <span class="fa fa-frown"></span>
+            ¡We are sorry!
+        </h1>
+        <p class="lead">@ViewData["ErrorMessage"]</p>
     </div>
 }
 else

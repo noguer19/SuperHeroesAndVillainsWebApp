@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Resource Not Found";
+}
+
+    <div class="jumbotron mt-5 text-center">
+        <h1 class="display-3">
+            <span class="fa fa-frown"></span>
+            ¡We are sorry!
+        </h1>
+        <p class="lead">@ViewBag.ErrorMessage. Click the button below to go to the Home page.</p>
+        <a class="btn bg-primary btn-xs" asp-action="Index" asp-controller="Home">
+            <span class="fa fa-home mr-1"></span>
+            Back to Home page
+        </a>
+    </div>
