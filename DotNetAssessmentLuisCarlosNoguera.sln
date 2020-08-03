@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetAssessmentLuisCarlosNoguera", "DotNetAssessmentLuisCarlosNoguera\DotNetAssessmentLuisCarlosNoguera.csproj", "{F98E9B7D-64CA-4688-9310-BA45C36ECCB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetAssessmentLuisCarlosNoguera", "DotNetAssessmentLuisCarlosNoguera\DotNetAssessmentLuisCarlosNoguera.csproj", "{F98E9B7D-64CA-4688-9310-BA45C36ECCB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperHeroesAppTests", "SuperHeroesAppTests\SuperHeroesAppTests.csproj", "{A54C14BE-0044-4B41-9D62-50F8F6A079E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{F98E9B7D-64CA-4688-9310-BA45C36ECCB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F98E9B7D-64CA-4688-9310-BA45C36ECCB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F98E9B7D-64CA-4688-9310-BA45C36ECCB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A54C14BE-0044-4B41-9D62-50F8F6A079E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A54C14BE-0044-4B41-9D62-50F8F6A079E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A54C14BE-0044-4B41-9D62-50F8F6A079E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A54C14BE-0044-4B41-9D62-50F8F6A079E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
