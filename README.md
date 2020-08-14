@@ -1,6 +1,6 @@
 # SuperHeroesAndVillainsWebApp
 
-ASP.NET Core MVC project that consume the Superhero API from https://superheroapi.com/ and allows users to search for their favorite SuperHero or Villain.
+ASP.NET Core MVC project that consumes the Superhero Rest API from https://superheroapi.com/ and allows users to search for their favorite SuperHero or Villain and see their detailed info.
 
 This app was created using Visual Studio 2019 with ASP.NET Core 3.1.
 
