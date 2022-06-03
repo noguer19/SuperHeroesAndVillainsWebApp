@@ -1,6 +1,6 @@
 using System;
 
-namespace DotNetAssessmentLuisCarlosNoguera.Models
+namespace SuperHeroesAndVillainsApp.Web.Models
 {
     public class ErrorViewModel
     {

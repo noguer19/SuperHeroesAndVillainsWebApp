@@ -1,10 +1,7 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
-namespace DotNetAssessmentLuisCarlosNoguera.Models
+namespace SuperHeroesAndVillainsApp.Web.Models
 {
     public class CharacterAppearance
     {
@@ -13,10 +10,10 @@ namespace DotNetAssessmentLuisCarlosNoguera.Models
         public ICollection<string> Height { get; set; }
         public ICollection<string> Weight { get; set; }
 
-        [JsonProperty(propertyName: "eye-color")]
+        [JsonPropertyName("eye-color")]
         public string EyeColor { get; set; }
 
-        [JsonProperty(propertyName: "hair-color")]
+        [JsonPropertyName("hair-color")]
         public string HairColor { get; set; }
     }
 }

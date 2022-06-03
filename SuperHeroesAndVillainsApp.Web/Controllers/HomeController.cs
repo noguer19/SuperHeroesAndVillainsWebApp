@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
+using SuperHeroesAndVillainsApp.Web.Models;
+using System;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using DotNetAssessmentLuisCarlosNoguera.Models;
-using DotNetAssessmentLuisCarlosNoguera.Api;
-using Microsoft.Extensions.Options;
-using System.Net.Http;
 
-namespace DotNetAssessmentLuisCarlosNoguera.Controllers
+namespace SuperHeroesAndVillainsApp.Web.Controllers
 {
     public class HomeController : Controller
     {
@@ -30,11 +24,11 @@ namespace DotNetAssessmentLuisCarlosNoguera.Controllers
                 TempData["searchTerm"] = characterName;
                 return View(characterList);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ViewData["ErrorMessage"] = "There was an error when processing your current request. Please check your internet connection and try again or contact the tech suppport team.";
                 return View("Error");
-            }   
+            }
         }
 
         public async Task<IActionResult> Character(int id)
@@ -43,7 +37,7 @@ namespace DotNetAssessmentLuisCarlosNoguera.Controllers
             try
             {
                 character = await _characterRepository.GetCharacterById(id);
-                if(character.Id == 0)
+                if (character.Id == 0)
                 {
                     Response.StatusCode = 404;
                     return View("CharacterNotFound");

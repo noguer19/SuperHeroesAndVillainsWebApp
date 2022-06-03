@@ -1,12 +1,10 @@
-﻿using DotNetAssessmentLuisCarlosNoguera.Api;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using SuperHeroesAndVillainsApp.Web.ApiConfiguration;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace DotNetAssessmentLuisCarlosNoguera.Models
+namespace SuperHeroesAndVillainsApp.Web.Models
 {
     public class CharacterRepository : ICharacterRepository
     {
@@ -26,11 +24,10 @@ namespace DotNetAssessmentLuisCarlosNoguera.Models
             {
                 using (var httpClient = new HttpClient())
                 {
-                    using (var apiResponse = await httpClient.GetAsync($"{_apiBaseUrl}/{characterId}"))
-                    {
-                        string apiResponseAsString = await apiResponse.Content.ReadAsStringAsync();
-                        character = JsonConvert.DeserializeObject<Character>(apiResponseAsString);
-                    }
+                    var apiResponse = await httpClient.GetAsync($"{_apiBaseUrl}/{characterId}");
+                    string apiResponseAsString = await apiResponse.Content.ReadAsStringAsync();
+                    character = JsonConvert.DeserializeObject<Character>(apiResponseAsString);
+
                 }
             }
             catch (Exception ex)
@@ -50,11 +47,9 @@ namespace DotNetAssessmentLuisCarlosNoguera.Models
                 {
                     using (var httpClient = new HttpClient())
                     {
-                        using (var apiResponse = await httpClient.GetAsync($"{_apiBaseUrl}/search/{characterName}"))
-                        {
-                            string apiResponseAsString = await apiResponse.Content.ReadAsStringAsync();
-                            responseViewModel = JsonConvert.DeserializeObject<SearchResponseViewModel>(apiResponseAsString);
-                        }
+                        var apiResponse = await httpClient.GetAsync($"{_apiBaseUrl}/search/{characterName}");
+                        string apiResponseAsString = await apiResponse.Content.ReadAsStringAsync();
+                        responseViewModel = JsonConvert.DeserializeObject<SearchResponseViewModel>(apiResponseAsString);
                     }
                 }
                 catch (Exception ex)
