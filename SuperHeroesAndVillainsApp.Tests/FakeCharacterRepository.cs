@@ -1,11 +1,11 @@
-using DotNetAssessmentLuisCarlosNoguera.Models;
+using SuperHeroesAndVillainsApp.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace SuperHeroesAppTests
+namespace SupperHeroesAndVillainsApp.Tests
 {
     public class FakeCharacterRepository : ICharacterRepository
     {

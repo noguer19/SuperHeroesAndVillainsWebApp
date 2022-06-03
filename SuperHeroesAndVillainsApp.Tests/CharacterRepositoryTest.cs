@@ -1,17 +1,13 @@
-﻿using DotNetAssessmentLuisCarlosNoguera.Controllers;
-using DotNetAssessmentLuisCarlosNoguera.Models;
-using System;
+﻿using SuperHeroesAndVillainsApp.Web.Models;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
 using Xunit;
 
-namespace SuperHeroesAppTests
+namespace SupperHeroesAndVillainsApp.Tests
 {
     public class CharacterRepositoryTest
     {
         private ICharacterRepository _repository;
-       
+
         public CharacterRepositoryTest()
         {
             _repository = new FakeCharacterRepository();
