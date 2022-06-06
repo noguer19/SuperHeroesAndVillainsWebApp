@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SuperHeroesAndVillainsApp.Web.Models;
-using System;
 using System.Diagnostics;
-using System.Threading.Tasks;
 
 namespace SuperHeroesAndVillainsApp.Web.Controllers;
 

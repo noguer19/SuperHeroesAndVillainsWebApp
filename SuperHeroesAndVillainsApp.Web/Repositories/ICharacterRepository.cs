@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-namespace SuperHeroesAndVillainsApp.Web.Models;
+﻿namespace SuperHeroesAndVillainsApp.Web.Models;
 
 public interface ICharacterRepository
 {

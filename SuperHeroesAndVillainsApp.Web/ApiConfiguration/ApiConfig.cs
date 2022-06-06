@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-
-namespace SuperHeroesAndVillainsApp.Web.ApiConfiguration;
+﻿namespace SuperHeroesAndVillainsApp.Web.ApiConfiguration;
 
 public class ApiConfig : IApiConfiguration
 {

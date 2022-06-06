@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace SuperHeroesAndVillainsApp.Web.Models;
+﻿namespace SuperHeroesAndVillainsApp.Web.Models;
 
 public class SearchResponseViewModel : IResponseViewModel
 {

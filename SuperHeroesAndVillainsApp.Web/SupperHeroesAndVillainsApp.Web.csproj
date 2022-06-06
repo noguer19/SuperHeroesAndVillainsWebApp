@@ -1,27 +1,28 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <UserSecretsId>ac364676-9494-4092-a9ba-022c1f2d4482</UserSecretsId>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<UserSecretsId>ac364676-9494-4092-a9ba-022c1f2d4482</UserSecretsId>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="wwwroot\lib\jquery-validation-unobtrusive\**" />
-    <Compile Remove="wwwroot\lib\jquery-validation\**" />
-    <Compile Remove="wwwroot\lib\jquery\**" />
-    <Content Remove="wwwroot\lib\jquery-validation-unobtrusive\**" />
-    <Content Remove="wwwroot\lib\jquery-validation\**" />
-    <Content Remove="wwwroot\lib\jquery\**" />
-    <EmbeddedResource Remove="wwwroot\lib\jquery-validation-unobtrusive\**" />
-    <EmbeddedResource Remove="wwwroot\lib\jquery-validation\**" />
-    <EmbeddedResource Remove="wwwroot\lib\jquery\**" />
-    <None Remove="wwwroot\lib\jquery-validation-unobtrusive\**" />
-    <None Remove="wwwroot\lib\jquery-validation\**" />
-    <None Remove="wwwroot\lib\jquery\**" />
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Remove="wwwroot\lib\jquery-validation-unobtrusive\**" />
+		<Compile Remove="wwwroot\lib\jquery-validation\**" />
+		<Compile Remove="wwwroot\lib\jquery\**" />
+		<Content Remove="wwwroot\lib\jquery-validation-unobtrusive\**" />
+		<Content Remove="wwwroot\lib\jquery-validation\**" />
+		<Content Remove="wwwroot\lib\jquery\**" />
+		<EmbeddedResource Remove="wwwroot\lib\jquery-validation-unobtrusive\**" />
+		<EmbeddedResource Remove="wwwroot\lib\jquery-validation\**" />
+		<EmbeddedResource Remove="wwwroot\lib\jquery\**" />
+		<None Remove="wwwroot\lib\jquery-validation-unobtrusive\**" />
+		<None Remove="wwwroot\lib\jquery-validation\**" />
+		<None Remove="wwwroot\lib\jquery\**" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+	</ItemGroup>
 
 </Project>

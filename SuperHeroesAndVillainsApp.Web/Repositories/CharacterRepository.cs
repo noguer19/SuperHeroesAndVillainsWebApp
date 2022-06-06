@@ -1,9 +1,5 @@
 ﻿using Newtonsoft.Json;
 using SuperHeroesAndVillainsApp.Web.ApiConfiguration;
-using System;
-using System.Net.Http;
-using System.Threading.Tasks;
-
 namespace SuperHeroesAndVillainsApp.Web.Models;
 
 public class CharacterRepository : ICharacterRepository
