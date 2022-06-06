@@ -1,19 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace SuperHeroesAndVillainsApp.Web.Models
+namespace SuperHeroesAndVillainsApp.Web.Models;
+
+public class CharacterAppearance
 {
-    public class CharacterAppearance
-    {
-        public string Gender { get; set; }
-        public string Race { get; set; }
-        public ICollection<string> Height { get; set; }
-        public ICollection<string> Weight { get; set; }
+    public string Gender { get; set; }
+    public string Race { get; set; }
+    public ICollection<string> Height { get; set; }
+    public ICollection<string> Weight { get; set; }
 
-        [JsonPropertyName("eye-color")]
-        public string EyeColor { get; set; }
+    [JsonPropertyName("eye-color")]
+    public string EyeColor { get; set; }
 
-        [JsonPropertyName("hair-color")]
-        public string HairColor { get; set; }
-    }
+    [JsonPropertyName("hair-color")]
+    public string HairColor { get; set; }
 }

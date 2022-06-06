@@ -4,57 +4,56 @@ using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
-namespace SuperHeroesAndVillainsApp.Web.Controllers
+namespace SuperHeroesAndVillainsApp.Web.Controllers;
+
+public class HomeController : Controller
 {
-    public class HomeController : Controller
+    private readonly ICharacterRepository _characterRepository;
+
+    public HomeController(ICharacterRepository characterRepository)
     {
-        private readonly ICharacterRepository _characterRepository;
+        _characterRepository = characterRepository;
+    }
 
-        public HomeController(ICharacterRepository characterRepository)
+    public async Task<IActionResult> Index(string characterName)
+    {
+        SearchResponseViewModel characterList = new SearchResponseViewModel();
+        try
         {
-            _characterRepository = characterRepository;
+            characterList = await _characterRepository.GetCharactersByName(characterName);
+            TempData["searchTerm"] = characterName;
+            return View(characterList);
         }
+        catch (Exception ex)
+        {
+            ViewData["ErrorMessage"] = "There was an error when processing your current request. Please check your internet connection and try again or contact the tech suppport team.";
+            return View("Error");
+        }
+    }
 
-        public async Task<IActionResult> Index(string characterName)
+    public async Task<IActionResult> Character(int id)
+    {
+        Character character = new Character();
+        try
         {
-            SearchResponseViewModel characterList = new SearchResponseViewModel();
-            try
+            character = await _characterRepository.GetCharacterById(id);
+            if (character.Id == 0)
             {
-                characterList = await _characterRepository.GetCharactersByName(characterName);
-                TempData["searchTerm"] = characterName;
-                return View(characterList);
+                Response.StatusCode = 404;
+                return View("CharacterNotFound");
             }
-            catch (Exception ex)
-            {
-                ViewData["ErrorMessage"] = "There was an error when processing your current request. Please check your internet connection and try again or contact the tech suppport team.";
-                return View("Error");
-            }
+            return View(character);
         }
+        catch (Exception ex)
+        {
+            ViewData["ErrorMessage"] = "There was an error when processing your current request. Please check your internet connection and try again or contact the tech suppport team.";
+            return View("Error");
+        }
+    }
 
-        public async Task<IActionResult> Character(int id)
-        {
-            Character character = new Character();
-            try
-            {
-                character = await _characterRepository.GetCharacterById(id);
-                if (character.Id == 0)
-                {
-                    Response.StatusCode = 404;
-                    return View("CharacterNotFound");
-                }
-                return View(character);
-            }
-            catch (Exception ex)
-            {
-                ViewData["ErrorMessage"] = "There was an error when processing your current request. Please check your internet connection and try again or contact the tech suppport team.";
-                return View("Error");
-            }
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public IActionResult Error()
+    {
+        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 }

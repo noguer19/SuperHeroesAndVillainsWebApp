@@ -1,8 +1,7 @@
-﻿namespace SuperHeroesAndVillainsApp.Web.Models
+﻿namespace SuperHeroesAndVillainsApp.Web.Models;
+
+public interface IResponseViewModel
 {
-    public interface IResponseViewModel
-    {
-        string Response { get; set; }
-        string Error { get; set; }
-    }
+    string Response { get; set; }
+    string Error { get; set; }
 }

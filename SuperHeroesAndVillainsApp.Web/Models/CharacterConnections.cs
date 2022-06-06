@@ -1,11 +1,10 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace SuperHeroesAndVillainsApp.Web.Models
+namespace SuperHeroesAndVillainsApp.Web.Models;
+
+public class CharacterConnections
 {
-    public class CharacterConnections
-    {
-        [JsonPropertyName("group-affiliation")]
-        public string GroupAffiliations { get; set; }
-        public string Relatives { get; set; }
-    }
+    [JsonPropertyName("group-affiliation")]
+    public string GroupAffiliations { get; set; }
+    public string Relatives { get; set; }
 }

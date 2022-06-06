@@ -1,10 +1,9 @@
 ﻿using System.Threading.Tasks;
 
-namespace SuperHeroesAndVillainsApp.Web.Models
+namespace SuperHeroesAndVillainsApp.Web.Models;
+
+public interface ICharacterRepository
 {
-    public interface ICharacterRepository
-    {
-        Task<SearchResponseViewModel> GetCharactersByName(string name);
-        Task<Character> GetCharacterById(int id);
-    }
+    Task<SearchResponseViewModel> GetCharactersByName(string name);
+    Task<Character> GetCharacterById(int id);
 }

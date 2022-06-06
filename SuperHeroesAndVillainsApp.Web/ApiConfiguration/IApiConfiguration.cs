@@ -1,7 +1,6 @@
-﻿namespace SuperHeroesAndVillainsApp.Web.ApiConfiguration
+﻿namespace SuperHeroesAndVillainsApp.Web.ApiConfiguration;
+
+public interface IApiConfiguration
 {
-    public interface IApiConfiguration
-    {
-        string GetBaseUrlWithToken();
-    }
+    string GetBaseUrlWithToken();
 }

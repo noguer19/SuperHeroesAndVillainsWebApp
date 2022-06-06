@@ -1,8 +1,7 @@
-﻿namespace SuperHeroesAndVillainsApp.Web.Models
+﻿namespace SuperHeroesAndVillainsApp.Web.Models;
+
+public class CharacterWork
 {
-    public class CharacterWork
-    {
-        public string Occupation { get; set; }
-        public string Base { get; set; }
-    }
+    public string Occupation { get; set; }
+    public string Base { get; set; }
 }
