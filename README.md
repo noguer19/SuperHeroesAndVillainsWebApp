@@ -11,3 +11,5 @@ If you do not want to clone it and open it let´s say "manually" you can click t
 Once the repository is cloned you can open the solution explorer and run the project with the F5 or Ctrl + F5 key if you do not want to run the project in debug mode.
 
 The web app is hosted in https://superheroesapp.azurewebsites.net/
+
+#Update: The project framework was updated to .NET 6
