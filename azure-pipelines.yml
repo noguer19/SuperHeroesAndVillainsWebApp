@@ -36,7 +36,17 @@ steps:
     projects: '**/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
 
-- task: PublishBuildArtifacts@1
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: true
+    arguments: --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)
+    zipAfterPublish: True
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    TargetPath: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'SuperHeroesApp'
 
 - task: AzureRmWebAppDeployment@4
   displayName: Deploying to Azure App Service
@@ -45,6 +55,6 @@ steps:
     azureSubscription: 'DreamSpark (e47ac5ee-b6f8-4c5d-badc-c928211435f9)'
     appType: 'webApp'
     WebAppName: 'SuperHeroesApp'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    packageForLinux: '$(Build.ArtifactStagingDirectory)/*.zip'
     enableCustomDeployment: true
     DeploymentType: 'webDeploy'
