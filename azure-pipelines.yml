@@ -1,0 +1,60 @@
+# ASP.NET Core (.NET Framework)
+# Build and test ASP.NET Core projects 
+# Add steps that publish symbols, save build artifacts, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
+steps:
+- task: NuGetToolInstaller@1
+
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution)'
+
+- task: DotNetCoreCLI@2
+  displayName: Running Tests
+  inputs:
+    configuration: '$(buildConfiguration)'
+    command: 'test'
+    projects: '**/*Tests/*.csproj'
+    testRunTitle: 'Run unit tests'
+ 
+- task: DotNetCoreCLI@2
+  displayName: Building
+  inputs:
+    command: 'build'
+    projects: '**/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: true
+    arguments: --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)
+    zipAfterPublish: True
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    TargetPath: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'SuperHeroesApp'
+
+- task: AzureRmWebAppDeployment@4
+  displayName: Deploying to Azure App Service
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'DreamSpark (e47ac5ee-b6f8-4c5d-badc-c928211435f9)'
+    appType: 'webApp'
+    WebAppName: 'SuperHeroesApp'
+    packageForLinux: '$(Build.ArtifactStagingDirectory)/*.zip'
+    enableCustomDeployment: true
+    DeploymentType: 'webDeploy'
