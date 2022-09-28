@@ -41,7 +41,12 @@ steps:
   inputs:
     command: 'publish'
     publishWebProjects: true
-    arguments: '--configuration $(buildConfiguration)'
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactProductionDirectory)'
     zipAfterPublish: True
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Build.ArtifactProductionDirectory)' 
+    artifactName: 'SuperHeroesAndVillainsApp'
   
 
