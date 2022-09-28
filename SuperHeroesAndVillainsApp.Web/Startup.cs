@@ -1,20 +1,22 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using SuperHeroesAndVillainsApp.Web.ApiConfiguration;
 using SuperHeroesAndVillainsApp.Web.Models;
 
 namespace DotNetAssessmentLuisCarlosNoguera
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpClient<ICharacterRepository, CharacterRepository>(client =>
+                client.BaseAddress = new Uri(Configuration["BaseApiUrl"] + Configuration["AuthToken"]));
+            
             services.AddControllersWithViews();
-            services.AddSingleton<IApiConfiguration, ApiConfig>();
-            services.AddSingleton<ICharacterRepository, CharacterRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
