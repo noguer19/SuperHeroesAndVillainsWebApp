@@ -36,7 +36,8 @@ steps:
     projects: '**/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
 
-  
+- task: PublishBuildArtifacts@1
+
 - task: AzureRmWebAppDeployment@4
   displayName: Deploying to Azure App Service
   inputs:
