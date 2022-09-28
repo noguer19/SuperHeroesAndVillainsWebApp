@@ -1,0 +1,47 @@
+# ASP.NET Core (.NET Framework)
+# Build and test ASP.NET Core projects 
+# Add steps that publish symbols, save build artifacts, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
+steps:
+- task: NuGetToolInstaller@1
+
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution)'
+
+- task: DotNetCoreCLI@2
+  displayName: Running Tests
+  inputs:
+    configuration: '$(buildConfiguration)'
+    command: 'test'
+    projects: '**/*Tests/*.csproj'
+    testRunTitle: 'Run unit tests'
+ 
+- task: DotNetCoreCLI@2
+  displayName: Building
+  inputs:
+    command: 'build'
+    projects: '**/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  displayName: Publishing
+  inputs:
+    command: 'publish'
+    publishWebProjects: true
+    arguments: '--configuration $(buildConfiguration)'
+    zipAfterPublish: True
+  
+
