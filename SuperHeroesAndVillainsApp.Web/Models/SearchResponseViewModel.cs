@@ -1,6 +1,6 @@
 ﻿namespace SuperHeroesAndVillainsApp.Web.Models;
 
-public class SearchResponseViewModel : IResponseViewModel
+public class SearchResponseViewModel
 {
     public List<Character> Results { get; set; }
     public string Response { get; set; }
